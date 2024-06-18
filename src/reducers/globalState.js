@@ -357,8 +357,8 @@ export default function reducer(_state, action) {
           };
           if (state.segmentRange.start && state.segmentRange.end) {
             state.zoom = {
-              start: state.segmentRange.start,
-              end: state.segmentRange.end,
+              start: Math.max(state.segmentRange.start, 0),
+              end: Math.min(state.segmentRange.end, state.currentRoute.duration)
             };
           } else {
             state.zoom = {
